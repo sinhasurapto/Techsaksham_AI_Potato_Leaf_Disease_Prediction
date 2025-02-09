@@ -54,5 +54,10 @@ if (st.button('Predict')):
     st.write('Our Prediction')
     result_index = model_prediction(test_image)
     class_names = ['Potato___Early_blight', 'Potato___Late_blight', 'Potato___healthy']
-    st.success(f"Model is predicting it is a {class_names[result_index]}.")
+    class_names_dict = {
+        'Potato___Early_blight': 'Potato Early Blight',
+        'Potato___Late_blight': 'Potato Late Blight',
+        'Potato___healthy': 'Healthy Potato'
+    }
+    st.success(f"Model is predicting it is a {class_names_dict[class_names[result_index]]}.")
 
