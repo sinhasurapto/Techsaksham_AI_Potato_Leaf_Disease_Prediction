@@ -7,7 +7,7 @@ import gdown
 import os
 
 # File information
-url = "https://drive.google.com/file/d/1JFBFGybOctCYqau4f1s9U9Jt2W7PeCDa/view?usp=sharing"
+url = "https://drive.google.com/uc?id=1JFBFGybOctCYqau4f1s9U9Jt2W7PeCDa"
 file_id = "1JFBFGybOctCYqau4f1s9U9Jt2W7PeCDa"
 model_path = "potato_leaf_disease_detection_model.keras"
 
@@ -15,6 +15,7 @@ model_path = "potato_leaf_disease_detection_model.keras"
 if not os.path.exists(model_path):
     st.warning("Downloading model from Google Drive...")
     gdown.download(url, model_path, quiet=False)
+    st.warning("Model has been downloaded...")
 
 # Perform prediction
 def model_prediction(test_image):
