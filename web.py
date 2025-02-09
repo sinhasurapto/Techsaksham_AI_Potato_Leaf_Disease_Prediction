@@ -1,7 +1,20 @@
 # Import modules
+from hashlib import file_digest
 import streamlit as st 
 import tensorflow as tf 
 import numpy as np 
+import gdown
+import os
+
+# File information
+url = "https://drive.google.com/file/d/1JFBFGybOctCYqau4f1s9U9Jt2W7PeCDa/view?usp=sharing"
+file_id = "1JFBFGybOctCYqau4f1s9U9Jt2W7PeCDa"
+model_path = "potato_leaf_disease_detection_model.keras"
+
+# If path not exists then download
+if not os.path.exists(model_path):
+    st.warning("Downloading model from Google Drive...")
+    gdown.download(url, model_path, quiet=False)
 
 # Perform prediction
 def model_prediction(test_image):
@@ -16,7 +29,7 @@ def model_prediction(test_image):
 st.sidebar.title('Potato Plant Leaf Disease Detection System')
 app_mode = st.sidebar.selectbox('select page', ['Home', 'Disease Recognition'])
 
-# Module to import image
+# Import image
 from PIL import Image
 img = Image.open('Plant_Image.jpeg')
 st.image(img)
@@ -34,7 +47,7 @@ test_image = st.file_uploader("Choose an image: ")
 if (st.button("Show Image")):
     st.image(test_image, width=4, use_container_width=True)
 
-# Display the prediction
+# Display the prediction on clicking button
 if (st.button('Predict')):
     st.snow()
     st.write('Our Prediction')
