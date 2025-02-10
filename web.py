@@ -58,5 +58,5 @@ if (st.button('Predict')):
         'Potato___Late_blight': 'Potato Late Blight',
         'Potato___healthy': 'Healthy Potato'
     }
-    st.success(f"Model is predicting it is a {class_names_dict[class_names[result_index]]}.")
+    st.success(f"Model is predicting it is {class_names_dict[class_names[result_index]]}.")
 
